@@ -4,7 +4,7 @@ import Slider from "react-slick";
 const EntertainmentCard = (props) => {
     return (
         <>
-            <div className="w-full h-30 px-2">
+            <div className="w-full h-30 px-2 py-2">
                 <img
                     className="w-full h-full rounded-xl"
                     src={props.src}
@@ -36,7 +36,7 @@ const EntertainmentCardSlider = () => {
         autoplay: false,
         slidesToShow: 5,
         slidesToScroll: 5,
-        InitialSlide: 0,
+        initialSlide: 0,
         responsive: [
             {
                 breakpoint: 1024,
@@ -49,16 +49,12 @@ const EntertainmentCardSlider = () => {
             {
                 breakpoint: 600,
                 settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 1,
-                    InitialSlide: 1
-                }
-            },
-            {
-                breakpoint: 400,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 1
+                    // slidesToShow: 3,
+                    // slidesToScroll: 2,
+                    // initialSlide: 1
+                    rows: 2,
+                    slidesToShow: 3,
+                    slidesToScroll: 2
                 }
             }
         ]

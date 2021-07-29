@@ -6,7 +6,7 @@ export default function HomePage() {
     return (
         <>
             <div className="container mx-auto px-4">
-                <h1 className="text-2xl font-bold text-gray-800 my-5 mx-6">The Best of Entertainment</h1>
+                <h1 className="text-2xl font-bold text-gray-800 my-4 mx-6">The Best of Entertainment</h1>
                 <EntertainmentCardSlider />
             </div>
         </>
