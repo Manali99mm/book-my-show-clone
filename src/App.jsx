@@ -1,13 +1,13 @@
 // HOC
 import DefaultHOC from "./HOC/Default.HOC";
 
-// component
-import Temp from "./components/temp"
+// Pages
+import HomePage from "./pages/Home.page";
 
 function App() {
   return (
     <>
-      <DefaultHOC path="/" exact component={Temp} />
+      <DefaultHOC path="/" exact component={HomePage} />
     </>
   );
 }

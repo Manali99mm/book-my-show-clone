@@ -4,27 +4,22 @@ import Slider from "react-slick";
 // Component
 import { NextArrow, PrevArrow } from './Arrows.component';
 
-// Import css files
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-
 const HeroCarousel = () => {
     const settingsLg = {
         arrows: true,
+        autoplay: true,
+        dots: true,
+        infinite: true,
         centerMode: true,
         centerPadding: "300px",
-        dots: true,
-        autoplay: true,
         slidesToShow: 1,
         slidesToScroll: 1,
-        infinite: true,
         speed: 500,
         nextArrow: <NextArrow />,
         prevArrow: <PrevArrow />
     }
     const settings = {
         arrows: true,
-        dots: true,
         infinite: true,
         speed: 500,
         slidesToShow: 1,
