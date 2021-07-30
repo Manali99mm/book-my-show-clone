@@ -7,7 +7,7 @@ const NavSm = () => {
         <>
             <div className="text-white flex items-center justify-between">
                 <div>
-                    <h3 className="text-2xl font-bold">It All Starts Here!</h3>
+                    <h3 className="text-2xl font-bold">Godzilla v/s Kong</h3>
                 </div>
                 <div className="w-8 h-8">
                     <BiShareAlt className="w-full h-full" />
