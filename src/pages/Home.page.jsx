@@ -1,13 +1,45 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useState, useEffect } from 'react'
 
 // Components
 import EntertainmentCardSlider from '../components/EntertainmentCard/EntertainmentCard.component'
 import PosterSlider from '../components/PosterSlider/PosterSlider.component'
 
-// Config
-import TempPosters from '../config/TempPosters.config'
-
 export default function HomePage() {
+    const [upcomingMovies, setUpcomingMovies] = useState([]);
+    const [popularMovies, setPopularMovies] = useState([]);
+    const [trending, setTrending] = useState([]);
+
+    useEffect(() => {
+        const requestUpcomingMovies = async () => {
+            const getUpcomingMovies = await axios.get("/movie/upcoming");
+            setUpcomingMovies(getUpcomingMovies.data.results);
+        }
+
+        requestUpcomingMovies();
+
+    }, [])
+
+    useEffect(() => {
+        const requestPopularMovies = async () => {
+            const getPopularMovies = await axios.get("/movie/popular");
+            setPopularMovies(getPopularMovies.data.results);
+        }
+
+        requestPopularMovies();
+
+    }, [])
+
+    useEffect(() => {
+        const requestTrending = async () => {
+            const getTrending = await axios.get("/trending/all/week");
+            setTrending(getTrending.data.results);
+        }
+
+        requestTrending();
+
+    }, [])
+
     return (
         <>
             <div className="flex flex-col gap-10">
@@ -25,7 +57,7 @@ export default function HomePage() {
                             />
                         </div>
                         <PosterSlider
-                            images={TempPosters}
+                            images={upcomingMovies}
                             title="Premieres"
                             subtitle="Brand new releases every friday"
                             isDark
@@ -35,15 +67,15 @@ export default function HomePage() {
             </div>
             <div className="container mx-auto px-4 my-8">
                 <PosterSlider
-                    images={TempPosters}
+                    images={trending}
                     title="Online Streaming events"
                     isDark={false}
                 />
             </div>
             <div className="container mx-auto px-4 my-8">
                 <PosterSlider
-                    images={TempPosters}
-                    title="Outdoor Events"
+                    images={popularMovies}
+                    title="Popular Movies"
                     isDark={false}
                 />
             </div>

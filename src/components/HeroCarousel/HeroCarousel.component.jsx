@@ -1,14 +1,25 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useState, useEffect } from 'react';
 import Slider from "react-slick";
 
 // Component
 import { NextArrow, PrevArrow } from './Arrows.component';
 
 const HeroCarousel = () => {
+    const [images, setImages] = useState([]);
+
+    useEffect(() => {
+        const requestNowPlayingMovies = async () => {
+            const getImages = await axios.get("/movie/now_playing");
+            setImages(getImages.data.results);
+        }
+
+        requestNowPlayingMovies();
+    }, [])
+
     const settingsLg = {
         arrows: true,
         autoplay: true,
-        dots: true,
         infinite: true,
         centerMode: true,
         centerPadding: "300px",
@@ -28,20 +39,13 @@ const HeroCarousel = () => {
         prevArrow: <PrevArrow />
     };
 
-    const images = [
-        "https://in.bmscdn.com/promotions/cms/creatives/1627464448882_rweb29.jpg",
-        "https://in.bmscdn.com/promotions/cms/creatives/1625720005981_upgradgrouppagebanner_webshowcase_1280x500.jpg",
-        "https://in.bmscdn.com/promotions/cms/creatives/1626372121139_bsm_1280x500_romcom_1.jpg",
-        "https://in.bmscdn.com/promotions/cms/creatives/1625135512787_bas_1280x500.jpg",
-    ]
-
     return (
         <>
             <div className="lg:hidden">
                 <Slider {...settings}>
                     {images.map((image) => (
                         <div className="w-full h-56 md:h-80 py-3">
-                            <img src={image} alt="testing" className="w-full h-full" />
+                            <img src={`https://image.tmdb.org/t/p/original${image.backdrop_path}`} alt="movie poster" className="w-full h-full" />
                         </div>
                     ))}
                 </Slider>
@@ -50,7 +54,7 @@ const HeroCarousel = () => {
                 <Slider {...settingsLg}>
                     {images.map((image) => (
                         <div className="w-full h-80 px-2 py-3">
-                            <img src={image} alt="testing" className="w-full h-full rounded" />
+                            <img src={`https://image.tmdb.org/t/p/original${image.backdrop_path}`} alt="movie poster" className="w-full h-full rounded" />
                         </div>
                     ))}
                 </Slider>
