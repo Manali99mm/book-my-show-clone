@@ -10,13 +10,16 @@ import "slick-carousel/slick/slick-theme.css";
 
 // Context provider
 import MovieProvider from "./context/movie.context"
+import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <MovieProvider>
-        <App />
-      </MovieProvider>
+      <ScrollToTop>
+        <MovieProvider>
+          <App />
+        </MovieProvider>
+      </ScrollToTop>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')

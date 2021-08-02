@@ -14,9 +14,12 @@ const NavSm = () => {
         <>
             <div className="text-white flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                    <FaChevronLeft />
+                    <Link to={"/"}>
+                        <FaChevronLeft />
+                    </Link>
                     <h3 className="text-2xl font-bold">{movie.original_title}</h3>
                 </div>
+
                 <div className="w-8 h-8">
                     <BiShareAlt className="w-full h-full" />
                 </div>
