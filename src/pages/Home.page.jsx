@@ -8,7 +8,7 @@ import PosterSlider from '../components/PosterSlider/PosterSlider.component'
 export default function HomePage() {
     const [upcomingMovies, setUpcomingMovies] = useState([]);
     const [popularMovies, setPopularMovies] = useState([]);
-    const [trending, setTrending] = useState([]);
+    const [nowPlaying, setNowPlaying] = useState([]);
 
     useEffect(() => {
         const requestUpcomingMovies = async () => {
@@ -31,12 +31,12 @@ export default function HomePage() {
     }, [])
 
     useEffect(() => {
-        const requestTrending = async () => {
-            const getTrending = await axios.get("/trending/all/week");
-            setTrending(getTrending.data.results);
+        const requestNowPlaying = async () => {
+            const getNowPlaying = await axios.get("/movie/now_playing");
+            setNowPlaying(getNowPlaying.data.results);
         }
 
-        requestTrending();
+        requestNowPlaying();
 
     }, [])
 
@@ -67,7 +67,7 @@ export default function HomePage() {
             </div>
             <div className="container mx-auto px-4 my-8">
                 <PosterSlider
-                    images={trending}
+                    images={nowPlaying}
                     title="Online Streaming events"
                     isDark={false}
                 />

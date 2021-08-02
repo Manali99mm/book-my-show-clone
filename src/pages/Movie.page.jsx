@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useContext, useState, useEffect } from 'react'
 import { useParams } from 'react-router';
 import { FaCcVisa, FaCcApplePay } from "react-icons/fa";
@@ -11,9 +12,6 @@ import PosterSlider from '../components/PosterSlider/PosterSlider.component'
 // Context
 import { MovieContext } from '../context/movie.context';
 
-// Config
-import TempPosters from '../config/TempPosters.config'
-import axios from 'axios';
 
 const Movie = () => {
     const { id } = useParams();
